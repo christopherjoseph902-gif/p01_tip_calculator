@@ -11,4 +11,7 @@ pythonpath = ["."]
 testpaths = ["tests"]
 
 [tool.mypy]
-python_version = "3.
+python_version = "3.14"
+strict = True
+warn_return_any = True
+disallow_untyped_defs = True
