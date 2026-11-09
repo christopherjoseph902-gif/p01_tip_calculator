@@ -1,7 +1,8 @@
 [project]
 name = "p01-tip-calculator"
 version = "0.1.0"
-requires-python = ">=3.14.3"
+requires-python = ">=3.14"
+dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest", "mypy"]
@@ -12,6 +13,6 @@ testpaths = ["tests"]
 
 [tool.mypy]
 python_version = "3.14"
-strict = True
-warn_return_any = True
-disallow_untyped_defs = True
+strict = true
+warn_return_any = true
+disallow_untyped_defs = true

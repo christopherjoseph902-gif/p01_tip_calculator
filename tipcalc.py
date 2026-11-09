@@ -38,4 +38,4 @@ def run_calculator(
 
     say(f"Tip: Tsh{tip: .2f}")
     say(f"Total: Tsh{total: .2f}")
-    say(f"Per person: Tsh{per_person: .2f}")    
+    say(f"Per person: Tsh{per_person: .2f}")   
