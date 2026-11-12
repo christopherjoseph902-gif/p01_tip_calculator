@@ -3,7 +3,7 @@ from collections.abc import Callable
 
 def greet(name: str) -> str:
     """ Send a greeting to the  user"""
-    return f"hello {name}"
+    return f"Hello, {name}"
 
 
 def calculate_tip(
@@ -36,6 +36,6 @@ def run_calculator(
     people = float(ask("Enter the number of people:"))
     tip, total, per_person = calculate_tip(amount,tip_percentage, people)
 
-    say(f"Tip: Tsh{tip: .2f}")
-    say(f"Total: Tsh{total: .2f}")
-    say(f"Per person: Tsh{per_person: .2f}")   
+    say(f"Tip: Tsh {tip: .2f}")
+    say(f"Total: Tsh {total: .2f}")
+    say(f"Per person: Tsh {per_person: .2f}")   
