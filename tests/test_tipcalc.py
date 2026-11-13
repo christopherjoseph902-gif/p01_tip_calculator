@@ -1,4 +1,4 @@
-import pytest
+import pytest  # noqa: I001
 from tipcalc import greet, calculate_tip, run_calculator
 
 
@@ -19,7 +19,7 @@ def test_negative_tip_is_rejected() -> None:
     with pytest.raises(ValueError, match="Tip percentage can't be zero or less"):
         calculate_tip(10.0, -0.1, 1)
 
-def test_zero_people_is_rejcted() -> None:
+def test_zero_people_is_rejected() -> None:
     with pytest.raises(ValueError, match="People cant be negative  oor zero"):
         calculate_tip(50.0, 20.0, 0 )
 
