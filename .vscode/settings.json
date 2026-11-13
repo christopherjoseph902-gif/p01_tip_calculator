@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "tip_calc",
+            "database": "${workspaceFolder:p01_tip_calculator}/main.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Tip_calculator",
+            "database": "${workspaceFolder:p01_tip_calculator}/main.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

@@ -4,7 +4,7 @@ import sqlite3
 def create_schema(connection: sqlite3.Connection) -> None:
     """Creating  a Schema for data base """
     connection.execute(
-        """CREATE TABLE IF NOT EXIST bills (
+        """CREATE TABLE IF NOT EXISTS bills (
         id INTEGER PRIMARY KEY,
         amount REAL NOT NULL CHECK (amount > 0),
         tip_percentage REAL NOT NULL CHECK (tip_percentage >= 0 ),
@@ -15,6 +15,7 @@ def create_schema(connection: sqlite3.Connection) -> None:
         """
                     )
     connection.commit()
+
 
 def save_calculation(
         connection: sqlite3.Connection,
@@ -28,20 +29,23 @@ def save_calculation(
     """ Save all the  calculation to  bills table"""
     cursor = connection.execute(
         """INSERT INTO  bills 
-        (amount,tip_percentage,people,per_person,created_at)
-        VALUE(?,?,?,?,?)"""
+        (amount, tip_percentage, people, per_person, created_at)
+        VALUES(?,?,?,?,?)""",
         (amount,tip_percentage,people,per_person,created_at),
     )
     connection.commit()
+
     if cursor.lastrowid is None:
         raise RuntimeError("SQLite did not return the inserted row identifier")
     return cursor.lastrowid
 
 
 def recent_calculations(connection: sqlite3.Connection ) -> list[tuple]:
-    """Retrive the five most recent bill insertions"""
+    """Retrieve the five most recent bill insertions"""
     cursor = connection.execute(
+    
         """SELECT amount, tip_percentage,people,per_person,created_at
         FROM bills ORDER BY id  DESC LIMIT 5"""
     )
     return cursor.fetchall()
+

@@ -3,7 +3,7 @@ from tipcalc import greet, calculate_tip, run_calculator
 
 
 def test_for_greet_name_value() -> None:
-    assert greet("Amina") == "Hello, Amina"
+    assert greet("Sabrina") == "Hello, Sabrina"
 
 def test_if_calculator_return_value()-> None:
     assert calculate_tip(40.0, 15.0, 2) == (6.0, 46.0, 23.0)
