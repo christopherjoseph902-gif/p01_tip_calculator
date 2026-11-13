@@ -48,6 +48,7 @@ def run_calculator(
     created_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     row_id = save(
+        name,
         amount,
         tip_percentage,
         people,
@@ -57,6 +58,8 @@ def run_calculator(
 
     say(f"""Saved successfully! \nRecord 
     ID: {row_id}""")
+    say(f"Name_of_payer: {name}")
+    say(f"Created_at : {created_at}")
     say(f"Tip: Tsh {tip: .2f}")
     say(f"Total: Tsh {total: .2f}")
     say(f"Per person: Tsh {per_person: .2f}")   

@@ -6,6 +6,7 @@ def create_schema(connection: sqlite3.Connection) -> None:
     connection.execute(
         """CREATE TABLE IF NOT EXISTS bills (
         id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
         amount REAL NOT NULL CHECK (amount > 0),
         tip_percentage REAL NOT NULL CHECK (tip_percentage >= 0 ),
         people INTEGER NOT NULL CHECK (people > 0),
@@ -19,6 +20,7 @@ def create_schema(connection: sqlite3.Connection) -> None:
 
 def save_calculation(
         connection: sqlite3.Connection,
+        name: str,
         amount: float,
         tip_percentage: float,
         people: int,
@@ -29,9 +31,9 @@ def save_calculation(
     """ Save all the  calculation to  bills table"""
     cursor = connection.execute(
         """INSERT INTO  bills 
-        (amount, tip_percentage, people, per_person, created_at)
-        VALUES(?,?,?,?,?)""",
-        (amount,tip_percentage,people,per_person,created_at),
+        (name, amount, tip_percentage, people, per_person, created_at)
+        VALUES(?,?,?,?,?,?)""",
+        (name, amount, tip_percentage, people, per_person, created_at),
     )
     connection.commit()
 
