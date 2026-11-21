@@ -1,69 +1,46 @@
-import customtkinter as ctk #noqa
-#import  the GUI library                           #CTkFrame: a container that holds other widgets
-                                                   #CTkLable: Display text
+import customtkinter as ctk
+
 
 class TipCalculatorApp(ctk.CTk):
-    #DEFINE OUR APPLICATION WINDOW
-    """"A class to initialize the application Window"""
-    def __init__(self) ->None: #initialize the application window
-        super().__init__()  #Initialize the parent CTk window
-        self.title("Tip Calculator") # set the windows title
-        self.geometry("1100*700") #The actual size of the  window
-        self.minsize(900,600) #The min size of window to prevent it from being too small
 
-        ctk.set_appearance_mode("dark") # enable dark appearance 
-        ctk.set_default_color_theme("blue") #select the blue accent theme 
+    def __init__(self) -> None:
+        super().__init__()# Initializes the window
 
-        #CONFIGURING WINDOWS LAY OUT
+        self.title("Tip Calculator")#The title of the  calcualtor
+        self.geometry("1100x700")#defines the dimension of the  screen
+        self.minsize(900, 600)# initializes the minimum size of the computer screen
 
-        self.grid_columnconfigure(1,weight =1)
-        self.grid_rowconfigure( 0,weight =1 )
+        #Appearance settings
+        ctk.set_appearance_mode("dark")
+        ctk.set_default_color_theme("blue")
 
-        #side bar
-        self.sidebar = ctk.CTkFrame(
+        # Configure the main window layout
+        self.grid_columnconfigure(1,weight = 1 )# allow  column   to expand while windows grow
+        self.grid_rowconfigure(0, weight = 1)# alow row zero to expand vertically
+
+        #sidebar
+        self.sidebar = ctk.CTkFrame(  #create a container
             self,
-            width =200,
-            corner_radius=0
+            width = 200,#The  width
+            corner_radius = 0
         )
-        self.sidebar.grid( #Position widget in a row and column
+        self.sidebar.grid(
             row=0,
             column=0,
-            sticky="nsew"
-        )
-        self.sidebar.grid_propagate(False)
-
-        #Side title
-        self.logo = ctk.CTkLabel(
-            self.sidebar,
-            text="TIP CALCULATOR",
-            font=("Arial", 20, "bold")
+            sticky="nsew"#stretches it in four direction
         )
 
-        self.logo.pack(pady=30) # arrange widgets inside a container
+        self.sidebar.propagate(False)#Prevent the child widget from changing the parent size automatically
 
-
-        #Main content area
-        self.main_area = ctk.CTkFrame(
-            self,
-            corner_radius=0
-         )
-        self.main_area.grid(
-            row=0,
-            column=1,
-            sticky="nsew",# a Widget stretch in all four direction
-            padx=15,
-            pady=15
+        self.logo =ctk.CTkLabel(#used to display text
+            self.sidebar,#make the label a child of the side bar
+            text = "TIP CALCULATOR",
+            font = ("Arial", 20, "bold")#sets the typography
         )
-        #Dashboard heading
-        self.heading =  ctk.CTkLabel(
-            self.main_area,
-            text = "Dash board",
-            font=("Arial", 28, "bold")
-        )
-        self.heading.pack(anchor="w", padx=25, pady=25) # arrange widget in a  container
+        self.logo.pack(pady=30)#positions it with vertical spacing
 
+        self.dashboard_button = 
 
 if __name__ == "__main__":
     app = TipCalculatorApp()
-    app.mainloop() #Start the GUI event loop and wait for user interaction
-
+    app.mainloop()#Start GUI main loop
